@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pinecone-demo"
+version = "0.1.0"
+description = ""
+authors = ["Nir Gazit <nir.gzt@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pinecone_demo"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^0.28.1"
+pinecone-client = {extras = ["grpc"], version = "^2.2.4"}
+pinecone-datasets = "^0.6.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
