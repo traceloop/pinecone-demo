@@ -4,6 +4,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 
+from traceloop.sdk import Traceloop
+
+Traceloop.init(disable_batch=True)
+
 index_name = 'gpt-4-langchain-docs-fast'
 model_name = 'text-embedding-ada-002'
 

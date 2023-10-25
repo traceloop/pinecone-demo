@@ -2,6 +2,11 @@ import os
 import openai
 import pinecone
 
+from traceloop.sdk import Traceloop
+from traceloop.sdk.decorators import workflow, task
+
+Traceloop.init(disable_batch=True)
+
 openai.api_key = os.getenv('OPENAI_API_KEY')
 embed_model = "text-embedding-ada-002"
 
@@ -13,6 +18,7 @@ index_name = 'gpt-4-langchain-docs-fast'
 index = pinecone.GRPCIndex(index_name)
 
 
+@task(name="retrieve_docs")
 def retrieve_docs(query):
     res = openai.Embedding.create(
         input=[query],
@@ -31,6 +37,7 @@ def augment_query(query, pinecone_res):
     return "\n\n---\n\n".join(contexts)+"\n\n-----\n\n"+query
 
 
+@task(name="query_llm")
 def query_llm(augmented_query):
     primer = """You are Q&A bot. A highly intelligent system that answers
 user questions based on the information provided by the user above
@@ -47,6 +54,7 @@ provided by the user you truthfully say "I don't know".
     )
 
 
+@workflow(name="ask_question")
 def ask_question(question):
     relevant_docs = retrieve_docs(question)
     augmented_query = augment_query(question, relevant_docs)
