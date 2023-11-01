@@ -13,7 +13,8 @@ pinecone-client = {extras = ["grpc"], version = "^2.2.4"}
 pinecone-datasets = "^0.6.2"
 langchain = "^0.0.322"
 tiktoken = "^0.5.1"
-traceloop-sdk = "^0.0.65"
+traceloop-sdk = "^0.1.6"
+sentry-sdk = {extras = ["opentelemetry"], version = "^1.33.1"}
 
 
 [build-system]
