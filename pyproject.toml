@@ -7,13 +7,16 @@ readme = "README.md"
 packages = [{include = "pinecone_demo"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-openai = "^0.28.1"
-pinecone-client = {extras = ["grpc"], version = "^2.2.4"}
-pinecone-datasets = "^0.6.2"
-langchain = "^0.0.322"
-tiktoken = "^0.5.1"
-traceloop-sdk = "^0.0.65"
+python = "~3.11"
+openai = "^1.9.0"
+pinecone-client = {extras = ["grpc"], version = "^3.2.2"}
+pinecone-datasets = "^0.7.0"
+langchain = "^0.1.17"
+tiktoken = "^0.6.0"
+traceloop-sdk = "^0.18.2"
+langchain-community = "^0.0.37"
+langchain-pinecone = "^0.1.0"
+langchain-openai = "^0.1.6"
 
 
 [build-system]
